@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Launch Radar — pre-token protocols ranked by implied value</title>
+<link rel="stylesheet" href="radar.css">
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Token Launch Radar</h1>
+    <p class="method">Implied value = TVL &times; peer multiple &times; growth &times; years tokenless. The multiple is the median market-cap/TVL of the protocol&rsquo;s own category among protocols whose token already trades, clamped to 0.10&ndash;10&times;; growth is its 7-day TVL change, the age factor rewards years run with no token. Protocols that already have a token are the yardstick, never board rows. No name is special-cased: one formula scores every row.</p>
+    <p class="stats" id="stats"></p>
+  </div>
+</header>
+<main class="wrap">
+  <section class="controls">
+    <input id="q" type="search" placeholder="Search name or slug" aria-label="Search name or slug">
+    <select id="fcat" aria-label="Category"><option value="">All categories</option></select>
+    <select id="fchain" aria-label="Chain"><option value="">All chains</option></select>
+    <select id="ftvl" aria-label="Minimum TVL">
+      <option value="0">Any TVL</option>
+      <option value="50000000">TVL $50M+</option>
+      <option value="100000000">TVL $100M+</option>
+      <option value="250000000">TVL $250M+</option>
+      <option value="1000000000">TVL $1B+</option>
+    </select>
+    <label class="wl"><input type="checkbox" id="fwl"> Watchlist only</label>
+    <span id="count"></span>
+  </section>
+  <aside id="detail" hidden></aside>
+  <table id="board">
+    <thead><tr>
+      <th data-k="rank">#</th>
+      <th data-k="name">Protocol</th>
+      <th data-k="cat">Category</th>
+      <th data-k="tvl" class="num">TVL</th>
+      <th data-k="chg" class="num">7d %</th>
+      <th data-k="years" class="num">Years tokenless</th>
+      <th data-k="mult" class="num">Multiple</th>
+      <th data-k="val" class="num">Implied value</th>
+    </tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <p class="foot">Data: DefiLlama snapshot of <span id="asof"></span> &middot; <span id="peers"></span> &middot; A row&rsquo;s implied value is this entry&rsquo;s own claim from the snapshot&rsquo;s figures, not a prediction that a token will be issued.</p>
+</main>
+<script src="zdata.js"></script>
+<script src="radar.js"></script>
+</body>
+</html>
